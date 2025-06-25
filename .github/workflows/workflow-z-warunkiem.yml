@@ -1,0 +1,13 @@
+name: workflow-z-warunkiem
+
+on:
+  push:
+    paths:
+      - 'src/**'
+
+jobs:
+  tylko-src:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zmiana w src wykryta
+        run: echo "Wykryto zmianę w katalogu src/"
