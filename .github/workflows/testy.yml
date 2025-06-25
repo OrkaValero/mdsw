@@ -5,13 +5,19 @@ on: [push]
 jobs:
   testowanie:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Ustawienie Pythona
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - name: Instalacja pytest
-        run: pip install pytest
-      - name: Uruchom testy
-        run: pytest
+    - uses: actions/checkout@v4
+    - name: Ustawienie Pythona
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+
+    - name: Instalacja pytest
+      run: |
+        pip install pytest
+
+    - name: Uruchom testy
+      env:
+        PYTHONPATH: ./src
+      run: pytest
